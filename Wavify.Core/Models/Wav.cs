@@ -5,16 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wavify.Models
+namespace Wavify.Core.Models
 {
-    public class WavFile
+    public class Wav
     {
         public Stream File { get; set; }
         public Header Header { get; set; } = new Header();
 
-        public WavFile() { }
+        public Wav() { }
 
-        public WavFile(Stream stream)
+        public Wav(Stream stream)
         {
             var binaryReader = new BinaryReader(stream);
 

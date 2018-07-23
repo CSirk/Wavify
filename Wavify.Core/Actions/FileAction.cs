@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wavify
+namespace Wavify.Core.Actions
 {
-    public class Operations
+    internal class FileAction
     {
     }
 }
