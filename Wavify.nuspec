@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Wavify</id>
+    <version>1.0.0.0</version>
+    <authors>Cody Sirk</authors>
+    <language>en-US</language>
+    <description>C# Wav Manipulation Library</description>
+  </metadata>
+  <files>
+    <file src="..\Wavify\Wavify\bin\debug\Wavify.dll" target="lib\Net40" />
+    <file src="..\Wavify\Wavify\bin\debug\Wavify.xml" target="lib\Net40" />
+	<file src="..\Wavify\Wavify\bin\debug\Wavify.Core.dll" target="lib\Net40" />
+  </files>
+</package>

@@ -9,14 +9,14 @@ using Wavify.Core.Models;
 
 namespace Wavify
 {
-    public class Wavify
+    public class WavConvert
     {
         /// <summary>
         /// Converts a stream to a Wav object
         /// </summary>
         /// <param name="stream"></param>
         /// <returns>Wav object representation of stream</returns>
-        public Wav ConvertStreamToWavData(Stream stream)
+        public static Wav ConvertStreamToWavData(Stream stream)
         {
             return WavAction.ConvertFromStreamToWav(stream);
         }
@@ -24,11 +24,13 @@ namespace Wavify
         /// <summary>
         /// Converts .wav file at the given path to a Wav object
         /// </summary>
-        /// <param name="FilePath">The path of the .wav file to read from</param>
+        /// <param name="filePath">The path of the .wav file to read from</param>
         /// <returns>Wav object representation of file contents</returns>
-        public Wav ConvertWavFileToWavData(string FilePath)
+        public static Wav ConvertWavFileToWavData(string filePath)
         {
-            return new Wav();
+            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+
+            return WavAction.ConvertFromStreamToWav(fileStream);
         }
 
         /// <summary>
@@ -37,9 +39,11 @@ namespace Wavify
         /// <param name="wav">The Wav object to create a .wav file from</param>
         /// <param name="filePathToWrite">The optional path to create the .wav file at. Defaults to current directory</param>
         /// <returns>Path to saved file</returns>
-        public string ConvertWavDataToWavFile(Wav wav, string filePathToWrite = "")
+        public static string ConvertWavDataToWavFile(Wav wav, string filePathToWrite = "")
         {
-            return "";
+            filePathToWrite = (filePathToWrite == "") ? Environment.CurrentDirectory : filePathToWrite;
+
+            return WavAction.WriteWavToFile(wav, filePathToWrite);
         }
 
         /// <summary>
@@ -48,7 +52,7 @@ namespace Wavify
         /// <param name="wav1">Base Wav object to append second Wav object to</param>
         /// <param name="wav2">Additional Wav object which is appended to base Wav object</param>
         /// <returns>Wav object concatination of wav2 onto the end of wav1</returns>
-        public Wav MergeWavs(Wav wav1, Wav wav2)
+        public static Wav MergeWavs(Wav wav1, Wav wav2)
         {
             return new Wav();
         }

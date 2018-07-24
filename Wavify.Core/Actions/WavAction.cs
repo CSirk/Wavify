@@ -12,10 +12,41 @@ namespace Wavify.Core.Actions
     {
         public static Wav ConvertFromStreamToWav(Stream stream)
         {
-            return CreateWaveFile(stream);
+            return CreateWavData(stream);
         }
 
-        private static Wav CreateWaveFile(Stream stream)
+
+        public static string CreateWavFile(Wav wavData, string filePathToWrite)
+        {
+            return WriteWavToFile(wavData, filePathToWrite);
+        }
+
+        public static string WriteWavToFile(Wav wavData, string filePathToWrite)
+        {
+            FileStream wavDataStream = new FileStream(filePathToWrite, FileMode.Create, FileAccess.Write);
+
+            BinaryWriter binaryWriter = new BinaryWriter(wavDataStream);
+
+            binaryWriter.Write(wavData.Header.RiffChunkDescriptor);
+            binaryWriter.Write(wavData.Header.Length);
+            binaryWriter.Write(wavData.Header.FormatSubChunk);
+            binaryWriter.Write((int)16);
+            binaryWriter.Write((short)1);
+            binaryWriter.Write(wavData.Header.Channels);
+            binaryWriter.Write(wavData.Header.SampleRate);
+            binaryWriter.Write((int)(wavData.Header.SampleRate * ((wavData.Header.BitsPerSample * wavData.Header.Channels) / 8)));
+            binaryWriter.Write((short)((wavData.Header.BitsPerSample * wavData.Header.Channels) / 8));
+            binaryWriter.Write(wavData.Header.BitsPerSample);
+            binaryWriter.Write(wavData.Header.DataSubChunk);
+            binaryWriter.Write(wavData.Header.DataLength);
+
+            wavDataStream.Close();
+            binaryWriter.Close();
+
+            return filePathToWrite;
+        }
+
+        private static Wav CreateWavData(Stream stream)
         {
             //Read filestream into binary reader
             var binaryReader = new BinaryReader(stream);
