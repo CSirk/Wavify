@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Wavify.Core.Actions
 {
-    internal class FileAction
+    public class FileAction
     {
+        public void WriteToFile() { }
+
+        public void ReadFromFile() { }
     }
 }
