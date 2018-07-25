@@ -43,7 +43,7 @@ namespace Wavify
         {
             filePathToWrite = (filePathToWrite == "") ? Environment.CurrentDirectory : filePathToWrite;
 
-            return WavAction.WriteWavToFile(wav, filePathToWrite);
+            return WavAction.WriteWavDataToWavFile(wav, filePathToWrite);
         }
 
         /// <summary>
