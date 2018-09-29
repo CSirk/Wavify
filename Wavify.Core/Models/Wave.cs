@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Wavify.Core.Models
 {
-    public class Wav
+    public class Wave
     {
         public Stream File { get; set; }
         public Header Header { get; set; } = new Header();
 
-        public Wav() { }
+        public Wave() { }
 
         //public Wav(Stream stream)
         //{

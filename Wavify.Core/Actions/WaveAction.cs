@@ -4,17 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
 using Wavify.Core.Models;
 
 namespace Wavify.Core.Actions
 {
-    public class WavAction
+    public class WaveAction
     {
-        public static Wav CreateWavDataFromWaveFile(string filePathToRead)
+        public static Wave CreateWaveDataFromWaveFile(string filePathToRead)
         {
-            var wav = new Wav();
+            var wav = new Wave();
             
             List<short> leftDataList = new List<short>(); //data for left channel (16bit 2 channel)
             List<short> rightDataList = new List<short>(); //data for right channel (16bit 2 channel)
@@ -61,18 +62,18 @@ namespace Wavify.Core.Actions
             return wav;
         }
 
-        public static Wav ConvertFromStreamToWav(Stream stream)
+        public static Wave ConvertFromStreamToWave(Stream stream)
         {
-            return CreateWavData(stream);
+            return CreateWaveData(stream);
         }
 
 
-        public static string CreateWavFile(Wav wavData, string filePathToWrite)
+        public static string CreateWaveFile(Wave waveData, string filePathToWrite)
         {
-            return WriteWavDataToWavFile(wavData, filePathToWrite);
+            return WriteWaveDataToWaveFile(waveData, filePathToWrite);
         }
 
-        public static string WriteWavDataToWavFile(Wav wavData, string filePathToWrite)
+        public static string WriteWaveDataToWaveFile(Wave waveData, string filePathToWrite)
         {
             return "";
             //FileStream wavDataStream = new FileStream(filePathToWrite, FileMode.Create, FileAccess.Write);
@@ -99,23 +100,26 @@ namespace Wavify.Core.Actions
 
         }
 
-        public static void ConvertWavToMp3(byte[] wavFile)
+        
+
+        public static void ConvertWaveStreamToMp3File(byte[] waveStreamAsBytes, string outputFileLocation)
         {
 
             using (var retMs = new MemoryStream())
-            using (var ms = new MemoryStream(wavFile))
+            using (var ms = new MemoryStream(waveStreamAsBytes))
             using (var rdr = new WaveFileReader(ms))
             using (var wtr = new LameMP3FileWriter(retMs, rdr.WaveFormat, 128))
             {
                 rdr.CopyTo(wtr);
+                wtr.Flush();
                 var byteArray = retMs.ToArray();
 
-                File.WriteAllBytes(@"C:\users\codas\desktop\test\newnew.mp3", byteArray);
+                File.WriteAllBytes(outputFileLocation, byteArray);
             }
 
         }
 
-        private static Wav CreateWavData(Stream stream)
+        private static Wave CreateWaveData(Stream stream)
         {
             ////Read filestream into binary reader
             //var binaryReader = new BinaryReader(stream);
@@ -157,7 +161,7 @@ namespace Wavify.Core.Actions
             //        SampleRate = samplerate,
             //    }
             //};
-            return new Wav();
+            return new Wave();
         }
     }
 }

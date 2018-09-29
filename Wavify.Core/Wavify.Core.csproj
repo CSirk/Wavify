@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,8 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\FileAction.cs" />
-    <Compile Include="Actions\WavAction.cs" />
-    <Compile Include="Models\Wav.cs" />
+    <Compile Include="Actions\SpeechAction.cs" />
+    <Compile Include="Actions\WaveAction.cs" />
+    <Compile Include="Models\Wave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
