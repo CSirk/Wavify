@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wavify", "Wavify\Wavify.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wavify.Core", "Wavify.Core\Wavify.Core.csproj", "{0AF8DDDD-EF3E-4CC8-9119-244C0F7C764C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wavify.Console", "Wavify.Console\Wavify.Console.csproj", "{5FA1CF69-FB2F-4257-8DD7-0DC90A0B8749}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0AF8DDDD-EF3E-4CC8-9119-244C0F7C764C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AF8DDDD-EF3E-4CC8-9119-244C0F7C764C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AF8DDDD-EF3E-4CC8-9119-244C0F7C764C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA1CF69-FB2F-4257-8DD7-0DC90A0B8749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA1CF69-FB2F-4257-8DD7-0DC90A0B8749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA1CF69-FB2F-4257-8DD7-0DC90A0B8749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA1CF69-FB2F-4257-8DD7-0DC90A0B8749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

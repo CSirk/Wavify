@@ -56,5 +56,10 @@ namespace Wavify
         {
             return new Wav();
         }
+
+        public static void ConvertWavToMp3(byte[] wavFile)
+        {
+            WavAction.ConvertWavToMp3(wavFile);
+        }
     }
 }

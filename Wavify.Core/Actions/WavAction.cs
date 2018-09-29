@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NAudio.Lame;
+using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -94,6 +96,22 @@ namespace Wavify.Core.Actions
             //binaryWriter.Close();
 
             //return filePathToWrite;
+
+        }
+
+        public static void ConvertWavToMp3(byte[] wavFile)
+        {
+
+            using (var retMs = new MemoryStream())
+            using (var ms = new MemoryStream(wavFile))
+            using (var rdr = new WaveFileReader(ms))
+            using (var wtr = new LameMP3FileWriter(retMs, rdr.WaveFormat, 128))
+            {
+                rdr.CopyTo(wtr);
+                var byteArray = retMs.ToArray();
+
+                File.WriteAllBytes(@"C:\users\codas\desktop\test\newnew.mp3", byteArray);
+            }
 
         }
 
