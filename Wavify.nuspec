@@ -5,7 +5,11 @@
     <version>1.0.0.0</version>
     <authors>Cody Sirk</authors>
     <language>en-US</language>
-    <description>C# Wav Manipulation Library</description>
+    <description>C# Audio Manipulation Library</description>
+	  <dependencies>
+	<dependency id="NAudio" version="1.8.4" />
+	<dependency id="NAudio.Lame" version="1.0.7" />
+  </dependencies>
   </metadata>
   <files>
     <file src="..\Wavify\Wavify\bin\debug\Wavify.dll" target="lib\Net40" />
